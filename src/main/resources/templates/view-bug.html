@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Application | Vizualizare bug</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/view-bug.css}">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+</head>
+<body>
+    <div class = "viewBugParent">
+        <span class="vizualizarebug-text">VIZUALIZARE RAPORTARE BUG</span>
+        <div class = "reportbug-parent">
+                <div class = "main-components">
+                    <span class = "view-maintitle" style = "margin-top: 10px;">Email</span>
+                    <div class = "reporter-email view-container">
+                        <div class = "email-description" style = "margin-bottom: 10px;">
+                            <a th:text="${bugEntity.email}"></a>
+                        </div>
+                    </div>
+
+                    <span class = "view-maintitle">Titlu</span>
+                        <div class = "bug-title view-container">
+                            <div class = "title-description">
+                                <a th:text="${bugEntity.title}"></a>
+                            </div>
+                        </div>
+
+                    <span class = "view-maintitle">Descriere</span>
+                        <div class = "bug-description-container view-container">
+                            <div class = "bug-description" style="padding: 20px">
+                                <a th:text="${bugEntity.description}"></a>
+                            </div>
+                        </div>
+
+                    <button class = "button" th:attr="onclick=|window.location.href='/delete-bug?bugUUID=${bugEntity.bugUUID}'|">Rezolvat</button>
+                    <button class = "button" th:attr="onclick=|window.location.href='/application/${applicationName}'|">Inapoi</button>
+
+                </div>
+        </div>
+    </div>
+</body>
+
+<script type = "text/javascript" th:src = "@{/js/jquery.min.js}"></script>
+<script type = "text/javascript" th:src = "@{/js/anime.min.js}"></script>
+</html>
+

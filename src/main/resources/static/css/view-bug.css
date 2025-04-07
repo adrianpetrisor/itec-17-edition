@@ -1,0 +1,103 @@
+@font-face {
+    font-family: 'Panton Black';
+    src: url("../fonts/panton/PantonNarrow-Trial-Black.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Panton Bold';
+    src: url("../fonts/panton/PantonNarrow-Trial-Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Panton ExtraBold';
+    src: url("../fonts/panton/PantonNarrow-Trial-ExtraBold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Panton ExtraLight';
+    src: url("../fonts/panton/PantonNarrow-Trial-ExtraLight.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Poppins Black';
+    src: url("../fonts/poppins/Poppins-Black.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Poppins Bold';
+    src: url("../fonts/poppins/Poppins-Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Poppins Thin';
+    src: url("../fonts/poppins/Poppins-Thin.ttf") format("truetype");
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    flex-direction: column;
+    row-gap: 20px;
+    color: ghostwhite;
+    text-align: center;
+    background-color: #0e0f13;
+    font-family: 'Bahnschrift', monospace;
+}
+
+.button {
+    margin-top: 20px;
+    border: 1px solid #161616;
+    border-radius: 7px;
+    background-color: #17181e;
+    padding: 10px;
+    color: ghostwhite;
+    font-family: 'Bahnschrift';
+    font-size: 20px;
+    width: 200px;
+    height: 50px;
+}
+
+.button:hover {
+    transition: 0.3s;
+    background-color: ghostwhite;
+    color: #101117;
+}
+
+.vizualizarebug-text {
+    font-size: 40px;
+}
+
+.main-components {
+    background-color: #101117;
+    width: 800px;
+    height: auto;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.view-container {
+    background-color: #17181e;
+    width: 100%;
+    font-size: 30px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.view-maintitle {
+    font-size: 25px;
+    margin-top: 15px;
+}
+
+.email-description,
+.title-description,
+.bug-description {
+    padding: 20px;
+}

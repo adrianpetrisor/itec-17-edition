@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Application | Logout</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/logout.css}">
+        <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+    </head>
+    <body>
+        <span class="title" th:if="${logout}">Ati fost delogat.</span>
+        <span class="title" th:unless="${logout}">Nu sunteti logat.</span>
+        <button class="back" onclick="window.location.href='/'">Inapoi la pagina principala</button>
+    </body>
+
+    <script type = "text/javascript" th:src = "@{/js/jquery.min.js}"></script>
+    <script type = "text/javascript" th:src = "@{/js/anime.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/logout.js}"></script>
+</html>

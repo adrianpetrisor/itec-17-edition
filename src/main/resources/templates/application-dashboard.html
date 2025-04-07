@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>ITEC | Application Dashboard</title>
+      <link rel="stylesheet" type="text/css" th:href="@{/css/application-dashboard.css}">
+      <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+      <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+  </head>
+  <body>
+      <div class="header">
+          <div class="header-information">
+              <div class="application-name">
+                  <span>Status for: <span class="application-name-value" th:text="${applicationName}"></span></span>
+              </div>
+              <div class="authentication-information">
+                  <span>Logged in as <span class="authentication-name-value" th:text="${userName}"></span></span>
+                  <button th:unless="${authenticated}" onclick="window.location.href='/login'" class="logout-button">Login</button>
+                  <button th:if="${authenticated}" onclick="window.location.href='/logout'" class="logout-button">Logout</button>
+              </div>
+          </div>
+
+          <div class="application-information">
+              <svg width="300" viewBox="0 0 612 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M520.336 25.3129L539.774 5.87466L592.202 58.3021L592.246 58.2573L611.685 77.6956L611.64 77.7404L611.662 77.7629L592.224 97.2012L592.202 97.1787L539.796 149.584L520.358 130.146L572.763 77.7404L520.336 25.3129Z" fill="white"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M0.0160127 77.6647L71.9042 5.77649L91.3425 25.2147L38.8651 77.6921L91.3265 130.154L71.8882 149.592L2.28882e-05 77.7036L0.0274689 77.6762L0.0160127 77.6647Z" fill="white"/>
+                  <path d="M161.875 47.9362H134.384V149.602H161.875V47.9362Z" fill="white"/>
+                  <path d="M161.875 0L134.384 0V27.4901H161.875V0Z" fill="white"/>
+                  <path d="M442.295 127.296C423.282 127.296 407.868 111.882 407.868 92.8536C407.868 73.8407 423.282 58.4261 442.295 58.4261C455.209 58.4261 466.446 65.5159 472.332 76.021L489.515 61.4144C479.345 46.1828 461.994 36.1352 442.295 36.1352C410.978 36.1352 385.577 61.5365 385.577 92.8536C385.577 124.186 410.978 149.587 442.295 149.587C461.842 149.587 479.086 139.692 489.271 124.659L472.134 110.067C466.187 120.374 455.057 127.296 442.295 127.296Z" fill="white"/>
+                  <path d="M341.803 100.035H348.939H364.399C364.704 97.6868 364.856 95.2931 364.856 92.8536C364.856 89.2706 364.521 85.7638 363.881 82.3637C358.956 56.0476 335.872 36.1351 308.123 36.1351C276.806 36.1351 251.404 61.5365 251.404 92.8536C251.404 124.186 276.806 149.587 308.123 149.587C327.669 149.587 344.914 139.692 355.114 124.659L337.961 110.052C332.03 120.359 320.884 127.296 308.123 127.296C291.58 127.296 277.751 115.617 274.458 100.035H336.894H341.803ZM275.327 82.3637C279.748 68.489 292.769 58.4261 308.123 58.4261C323.492 58.4261 336.497 68.489 340.934 82.3637H275.327Z" fill="white"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M187.657 0L214.873 0V36.989H236.112V64.4791H214.873V107.902H187.657L187.657 64.4791V36.989V0ZM187.657 107.902L187.657 107.917C187.657 130.925 206.319 149.587 229.327 149.587V122.372C221.353 122.372 214.873 115.892 214.873 107.917L187.657 107.902ZM229.327 122.372H235.761V149.587H229.327V122.372Z" fill="white"/>
+              </svg>
+
+              <div class="application-status">
+                  <span>This application is Healthy</span>
+              </div>
+          </div>
+      </div>
+
+      <div class="application-container">
+          <div th:if="${notification}" class="notification-container">
+              <span class="notification-text" th:text="${notificationMessage}"></span>
+              <button class="notification-button" onclick="closeNotification()">X</button>
+          </div>
+
+          <div class="endpoints-container">
+              <div class="endpoints-header">
+                  <span class="endpoints-title">Endpoints</span>
+                  <div class="endpoint-add-button-container">
+                      <button th:if="${owner}" class="endpoint-add-button" th:attr="onclick=|window.location.href='/create-endpoint?applicationUUID=${applicationUUID}'|">Create Endpoint</button>
+                  </div>
+              </div>
+
+              <div th:each="endpointEntity: ${endpointEntities}" class="endpoint-container">
+                  <span class="endpoint-title" th:text="${endpointEntity.endpointName}"></span>
+                    <div class="endpoint-call-area">
+                      <div class="endpoint-call">
+
+                      </div>
+                      <div class="endpoint-call">
+
+                      </div>
+                      <div class="endpoint-call">
+
+                      </div>
+                      <div class="endpoint-call">
+
+                      </div>
+                      <div class="endpoint-call">
+
+                      </div>
+                  </div>
+                  <button th:if="${owner}" class="endpoint-add-button" style="background-color: indianred" th:attr="onclick=|window.location.href='/delete-endpoint?endpointUUID=${endpointEntity.endpointUUID}'|"> Delete Endpoint</button>
+              </div>
+
+              <div th:unless="${hasEndpoints}" class="endpoint-container"  style="text-align: center">
+                  <span class="endpoint-title">There are no endpoints registered.</span>
+              </div>
+          </div>
+
+          <div class="reported-bugs-container">
+              <div class="reported-bugs-header">
+                  <span class="reported-bugs-title">Bug Reports</span>
+                  <div class="report-bug-button-container">
+                      <button th:unless="${owner}" class="report-bug-button" th:attr="onclick=|window.location.href='/report-bug?applicationName=${applicationName}'|">Report Bug</button>
+                  </div>
+              </div>
+
+              <div th:if="${owner}" class="reported-bugs">
+                  <div th:each="bugEntity: ${bugEntities}" class="reported-bug">
+                      <div class="bug-type">
+                          <span th:text="${bugEntity.type}"></span>
+                      </div>
+                      <div class="bug-title">
+                          <span th:text="${bugEntity.title}"></span>
+                      </div>
+                      <div class="bug-view-button-container">
+                          <button class="view-bug-button" th:attr="onclick=|window.location.href='/view-bug?bugUUID=${bugEntity.bugUUID}'|">View Bug</button>
+                      </div>
+                  </div>
+
+                  <span class="reported-bugs-title" th:unless="${hasBugs}" style="font-family: 'Bahnschrift', monospace">Nu sunt bug-uri raportate la momentul actual.</span>
+              </div>
+          </div>
+
+          <div th:if="${owner}" class="settings-container">
+              <form th:action="@{/settings-save}" method="post" th:object="${settings}">
+                  <div class="settings-header">
+                      <span class="settings-title">Setari</span>
+                  </div>
+
+                  <div class="settings-options-container">
+
+                      <div class="setting">
+                          <div class="setting-name-container">
+                              <span class="setting-name">Statistica</span>
+                          </div>
+
+                          <div class="setting-input-value">
+                              <select class="input-style" name="statistica">
+                                  <option value="Zile">Zile</option>
+                                  <option value="Ore">Ore</option>
+                              </select>
+                          </div>
+                      </div>
+
+                      <div class="setting">
+                          <div class="setting-name-container">
+                              <span class="setting-name">Interval Statistica</span>
+                          </div>
+
+                          <div class="setting-input-value">
+                              <input type="text" class="input-style" autocomplete="off" placeholder="Interval Statistica">
+                          </div>
+                      </div>
+
+                      <div class="setting">
+                          <div class="setting-name-container">
+                              <span class="setting-name">Interval Apel</span>
+                          </div>
+
+                          <div class="setting-input-value">
+                              <input type="text" class="input-style" autocomplete="off" placeholder="Interval Apel">
+                          </div>
+                      </div>
+
+                      <div class="break"></div>
+
+                      <button class="settings-save-button">Salveaza</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </body>
+
+  <footer>
+      <div class="footer">
+          <div class="row">
+              <a href="#"><i class="fa fa-facebook">
+                  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="60" height="60" viewBox="0 0 48 48">
+                      <linearGradient id="Ld6sqrtcxMyckEl6xeDadMa_uLWV5A9vXIPu_gr1" x1="9.993" x2="40.615" y1="9.993" y2="40.615" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2aa4f4"></stop><stop offset="1" stop-color="#007ad9"></stop></linearGradient><path fill="url(#Ld6sqrtcxMyckEl6xeDdMa_uLWV5A9vXIPu_gr1)" d="M24,4C12.954,4,4,12.954,4,24s8.954,20,20,20s20-8.954,20-20S35.046,4,24,4z"></path><path fill="#fff" d="M26.707,29.301h5.176l0.813-5.258h-5.989v-2.874c0-2.184,0.714-4.121,2.757-4.121h3.283V12.46 c-0.577-0.078-1.797-0.248-4.102-0.248c-4.814,0-7.636,2.542-7.636,8.334v3.498H16.06v5.258h4.948v14.452 C21.988,43.9,22.981,44,24,44c0.921,0,1.82-0.084,2.707-0.204V29.301z"></path>
+                  </svg>
+              </a>
+              <a href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="60" height="60" viewBox="0 0 48 48">
+                      <radialGradient id="yOrnnhliCrdS2gy~4tD8ma_Xy10Jcu1L2Su_gr1" cx="19.38" cy="42.035" r="44.899" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fd5"></stop><stop offset=".328" stop-color="#ff543f"></stop><stop offset=".348" stop-color="#fc5245"></stop><stop offset=".504" stop-color="#e64771"></stop><stop offset=".643" stop-color="#d53e91"></stop><stop offset=".761" stop-color="#cc39a4"></stop><stop offset=".841" stop-color="#c837ab"></stop></radialGradient><path fill="url(#yOrnnhliCrdS2gy~4tD8ma_Xy10Jcu1L2Su_gr1)" d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20	c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20	C42.014,38.383,38.417,41.986,34.017,41.99z"></path><radialGradient id="yOrnnhliCrdS2gy~4tD8mb_Xy10Jcu1L2Su_gr2" cx="11.786" cy="5.54" r="29.813" gradientTransform="matrix(1 0 0 .6663 0 1.849)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4168c9"></stop><stop offset=".999" stop-color="#4168c9" stop-opacity="0"></stop></radialGradient><path fill="url(#yOrnnhliCrdS2gy~4tD8mb_Xy10Jcu1L2Su_gr2)" d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20	c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20	C42.014,38.383,38.417,41.986,34.017,41.99z"></path><path fill="#fff" d="M24,31c-3.859,0-7-3.14-7-7s3.141-7,7-7s7,3.14,7,7S27.859,31,24,31z M24,19c-2.757,0-5,2.243-5,5	s2.243,5,5,5s5-2.243,5-5S26.757,19,24,19z"></path><circle cx="31.5" cy="16.5" r="1.5" fill="#fff"></circle><path fill="#fff" d="M30,37H18c-3.859,0-7-3.14-7-7V18c0-3.86,3.141-7,7-7h12c3.859,0,7,3.14,7,7v12	C37,33.86,33.859,37,30,37z M18,13c-2.757,0-5,2.243-5,5v12c0,2.757,2.243,5,5,5h12c2.757,0,5-2.243,5-5V18c0-2.757-2.243-5-5-5H18z"></path>
+                  </svg>
+              </a>
+              <a href="#"><i class="fa fa-youtube"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="60" height="60" viewBox="0 0 48 48">
+                  <path fill="#FF3D00" d="M43.2,33.9c-0.4,2.1-2.1,3.7-4.2,4c-3.3,0.5-8.8,1.1-15,1.1c-6.1,0-11.6-0.6-15-1.1c-2.1-0.3-3.8-1.9-4.2-4C4.4,31.6,4,28.2,4,24c0-4.2,0.4-7.6,0.8-9.9c0.4-2.1,2.1-3.7,4.2-4C12.3,9.6,17.8,9,24,9c6.2,0,11.6,0.6,15,1.1c2.1,0.3,3.8,1.9,4.2,4c0.4,2.3,0.9,5.7,0.9,9.9C44,28.2,43.6,31.6,43.2,33.9z"></path><path fill="#FFF" d="M20 31L20 17 32 24z"></path>
+              </svg></a>
+          </div>
+
+          <div class="row">
+              <ul>
+                  <li><a href="/dashboard">Dashboard</a></li>
+                  <li><a href="/register">Register</a></li>
+                  <li><a href="/login">Login</a></li>
+              </ul>
+          </div>
+
+          <div class="row">
+              <span>Copyright ITEC Romania - SevenTailed Team</span>
+          </div>
+      </div>
+  </footer>
+
+  <script type = "text/javascript" th:src = "@{/js/jquery.min.js}"></script>
+  <script type = "text/javascript" th:src = "@{/js/anime.min.js}"></script>
+  <script type="text/javascript" th:src="@{/js/application-dashboard.js}"></script>
+</html>

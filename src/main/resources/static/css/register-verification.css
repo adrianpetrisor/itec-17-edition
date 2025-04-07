@@ -1,0 +1,97 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-flow: column;
+    flex-direction: column;
+
+    row-gap: 20px;
+    color: ghostwhite;
+    text-align: center;
+    background-color: #0e0f13;
+    font-family: 'Bahnschrift', monospace;
+}
+
+a {
+    font-family: 'Bahnschrift', monospace;
+    color: whitesmoke;
+}
+
+.components {
+    display: flex;
+    flex-direction: column;
+}
+
+.verify-button {
+    margin-top: 20px;
+    border: 1px solid #161616;
+    border-radius: 7px;
+    background-color: #17181e;
+    padding: 10px;
+    color: ghostwhite;
+    font-family: 'Bahnschrift';
+    font-size: 20px;
+    width: 200px;
+    height: 50px;
+}
+
+.input-style {
+    border: 1px solid #161616;
+    border-radius: 7px;
+    background-color: #17181e;
+    padding: 5px;
+    color: ghostwhite;
+    width: 300px;
+    height: 60px;
+    margin-top: 10px;
+}
+
+.input-style:focus {
+    outline: none;
+}
+
+.main-components {
+    background-color: #101117;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.verifycode {
+    font-size: 20px;
+}
+
+
+.bottom-class {
+    display: flex;
+    flex-direction: column;
+    font-size: 10px;
+}
+
+.verify-button:hover {
+    transition: 0.3s;
+    background-color: ghostwhite;
+    color: #101117;
+}
+
+.verify-button:after {
+    transition: 0.3s;
+}
+
+.media-logo {
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+
+.label-verify-code {
+    font-size: 25px;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Application | Register Email Verification</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/register-verification.css}">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+</head>
+<body>
+
+<h1 th:unless="${alreadyLoggedIn}" style = "font-size: 35px;">VERIFICA-TI EMAIL-UL!</h1>
+<div th:unless="${alreadyLoggedIn}" class = "verify-parent">
+    <form th:action="@{/register-verification}" method="post" class = "verify-form" autocomplete="off">
+        <div class = "main-components">
+
+            <div class = "username-components components">
+                <label for = "verifycode" class = "label-verify-code" >COD DE VERIFICARE</label>
+                <input type = "text" class = "verify-input input-style" name="username" id = "verifycode" placeholder="Verification code of 6 digits">
+            </div>
+
+
+            <input type = "submit" value = "VERIFICA CODUL" class = "verify-button">
+        </div>
+    </form>
+</div>
+<div class = "bottom-class">
+    <a th:unless="${alreadyLoggedIn}" href="/register" style = "font-size: 15px;">Ai folosit emailul gresit? Apasa aici pentru a schimba.</a>
+</div>
+</body>
+
+<script type="text/javascript" th:src="@{/js/login.js}"></script>
+</html>

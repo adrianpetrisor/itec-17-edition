@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>ITEC | Error</title>
+    </head>
+    <body>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                min-height: 100vh;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                flex-flow: column;
+                flex-direction: column;
+
+                color: ghostwhite;
+                text-align: center;
+                background-color: #0e0f13;
+                font-family: 'Bahnschrift', monospace;
+                font-size: 30px;
+            }
+
+            span {
+                font-family: "Bahnschrift", monospace;
+            }
+
+            .error-button{
+                width: 400px;
+                height: 50px;
+
+                background-color: #4d5ebb;
+
+                font-family: "Bahnschrift", monospace;
+                font-size: 30px;
+                color: whitesmoke;
+
+                border: none;
+                border-radius: 10px;
+                text-align: center;
+
+                margin-top: 20px;
+            }
+
+            .error-button:hover {
+                background-color: #101117;
+                color: white;
+                transition: .3s;
+            }
+        </style>
+
+        <div class = "error-page">
+            <span style="font-size: 60px;">Eroare</span><br>
+            <span>Pagina pe care a-ti incercat sa o accesati nu exista sau nu raspunde.</span><br>
+            <button class = "error-button" draggable = "false" onclick="window.location.href='/'">Inapoi la pagina principala</button>
+        </div>
+    </body>
+</html>

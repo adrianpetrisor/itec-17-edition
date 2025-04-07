@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Application | Adauga un nou endpoint</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/create-endpoint.css}">
+        <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+    </head>
+    <body>
+        <span class="endpoint-title">Creeaza Endpoint</span>
+        <div th:if="${error}" class="error-container">
+            <span class="error-text" th:text="${errorMessage}"></span>
+            <button class="error-button" onclick="closeError()">X</button>
+        </div>
+        <div class = "login-parent">
+            <form th:action="@{/create-endpoint}" method="post" th:object="${endpointCredentials}" class = "endpoint-form" autocomplete="off">
+                <div class = "main-components">
+                        <div class = "endpoint-name">
+                            <label for = "endpoint-name-input">Nume Endpoint</label>
+                            <input type = "text" id = "endpoint-name-input" class = "input-style" required th:field="*{title}" placeholder="Introdu numele endpoint-ului">
+                        </div>
+
+                        <div class = "application-name">
+                            <label for = "application-name-input">Aplicatie</label>
+                            <input type = "text" id = "application-name-input" class = "input-style" required th:field="*{applicationName}" placeholder="Confirma numele aplicatiei">
+                        </div>
+
+                        <label for = "endpoint-type">Tip Endpoint</label>
+
+                        <select class="input-style" id="endpoint-type" name="endpoint-type" th:field="*{type}">
+                            <option value="URL">URL</option>
+                            <option value="Socket">Socket</option>
+                        </select>
+
+                        <div class = "endpoint-value">
+                            <label for = "endpoint-value-input">Valoare Endpoint</label>
+                            <input type = "text" id = "endpoint-value-input" class = "input-style" required th:field="*{value}" placeholder="Introdu adresa endpoint-ului">
+                        </div>
+
+                    <input type = "submit" class = "endpoint-button" value = "Creeaza Endpoint">
+                </div>
+
+            </form>
+        </div>
+    </body>
+
+    <script type = "text/javascript" th:src = "@{/js/jquery.min.js}"></script>
+    <script type = "text/javascript" th:src = "@{/js/anime.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/create-endpoint.js}"></script>
+</html>
+

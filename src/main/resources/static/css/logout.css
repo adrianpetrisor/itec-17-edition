@@ -1,0 +1,48 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-flow: column;
+    flex-direction: column;
+
+    color: ghostwhite;
+    text-align: center;
+    background-color: #0e0f13;
+    font-family: 'Bahnschrift', monospace;
+}
+
+.title {
+    font-family: 'Bahnschrift', monospace;
+    font-size: 60px;
+    color: whitesmoke;
+}
+
+.back {
+    margin-top: 20px;
+    border: 1px solid #161616;
+    border-radius: 7px;
+    background-color: #17181e;
+    padding: 10px;
+    color: ghostwhite;
+
+    width: 500px;
+    height: 70px;
+    font-size: 30px;
+}
+.back:hover {
+    transition: 0.5s;
+    background-color: ghostwhite;
+    color: #101117;
+}
+
+.back:after {
+    transition: 0.3s;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Application | Login</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
+        <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+    </head>
+    <body>
+        <span th:if="${alreadyLoggedIn}" class="back-title" style="font-size: 60px">Sunteti deja logat!</span>
+        <button th:if="${alreadyLoggedIn}" class="back" onclick="window.location.href='/'">Inapoi la pagina principala</button>
+
+        <span th:unless="${alreadyLoggedIn}" class="login-title">Autentificare</span>
+        <div th:if="${error}" class="error-container">
+            <span class="error-text" th:text="${errorMessage}"></span>
+            <button class="error-button" onclick="closeError()">X</button>
+        </div>
+
+        <div th:unless="${alreadyLoggedIn}" class = "login-parent">
+            <form th:action="@{/login}" method="post" class = "login-form" autocomplete="off">
+                <div class = "main-components">
+                    <div class = "username-components components">
+                        <label for = "username" class = "labelText-username" style = "margin-bottom: 10px;" >Username</label>
+                        <input type = "text" class = "username-input input-style" name="username" id = "username" required placeholder="Username">
+                    </div>
+
+                    <div class = "password-components components" style = "margin-top: 15px;">
+                        <label for = "password" style = "margin-bottom: 10px;">Parola</label>
+                        <input class = "password input-style" style = "margin-bottom: 10px;" type = "password" name="password" id = "password" required placeholder="Parola">
+                    </div>
+
+                     <input type = "submit" value = "Autentificare" class = "login-button" style="margin-bottom: 20px;">
+                </div>
+            </form>
+        </div>
+        <div class = "bottom-class" style="margin-top: 50px;">
+            <a th:unless="${alreadyLoggedIn}" href="/register"> Creeaza un cont nou!</a>
+        </div>
+    </body>
+
+    <script type = "text/javascript" th:src = "@{/js/jquery.min.js}"></script>
+    <script type = "text/javascript" th:src = "@{/js/anime.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/login.js}"></script>
+</html>
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>ITEC | Creeaza o aplicatie noua</title>
+        <link rel="stylesheet" type="text/css" th:href="@{css/create-application.css}">
+    </head>
+    <body>
+        <span class="create-application-title">Creeaza o noua aplicatie!</span>
+        <div th:if="${error}" class="error-container">
+            <span class="error-text" th:text="${errorMessage}"></span>
+            <button class="error-button" onclick="closeError()">X</button>
+        </div>
+
+        <div class="create-application-container">
+            <form th:action="@{/create-application}" method="post" th:object="${applicationCredentials}">
+                <div class="name-components">
+                    <label for = "username" class = "input-label" style = "margin-bottom: 20px; margin-right: 20px" >Nume</label> </br>
+                    <input type = "text" class = "input-style" name="username" id = "username" autocomplete="off" th:field="*{applicationName}" placeholder="Numele Aplicatiei">
+                </div>
+
+                <div class="image-components" style="margin-top: 20px;">
+                    <label for = "image" class = "input-label" style = "margin-bottom: 20px; margin-right: 20px" >Poza</label> </br>
+                    <input type = "text" class = "input-style" name="image" id = "image" th:field="*{applicationPhoto}" autocomplete="off" placeholder="Link de pe imgur cu o poza">
+                </div>
+
+                <div class="description-components" style="margin-top: 20px;">
+                    <label for = "descriere" class = "input-label" style = "margin-bottom: 20px; margin-right: 20px" >Descriere</label> </br>
+                    <input type = "text" class = "input-style" name="descriere" id = "descriere" th:field="*{applicationDescription}" autocomplete="off" placeholder="O scurta descriere despre aplicatie">
+                </div>
+
+                <input class="create-button" type="submit" value="Creeaza Aplicatia">
+            </form>
+        </div>
+    </body>
+
+    <script type="text/javascript" th:src="@{js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{js/anime.min.js}"></script>
+    <script type="text/javascript" th:src="@{js/navbar.js}"></script>
+    <script type="text/javascript" th:src="@{js/create-application.js}"></script>
+</html>

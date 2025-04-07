@@ -1,0 +1,244 @@
+@font-face {
+    font-family: 'Panton Black';
+    src: url("../fonts/panton/PantonNarrow-Trial-Black.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Panton Bold';
+    src: url("../fonts/panton/PantonNarrow-Trial-Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Panton ExtraBold';
+    src: url("../fonts/panton/PantonNarrow-Trial-ExtraBold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Panton ExtraLight';
+    src: url("../fonts/panton/PantonNarrow-Trial-ExtraLight.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Poppins Black';
+    src: url("../fonts/poppins/Poppins-Black.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Poppins Bold';
+    src: url("../fonts/poppins/Poppins-Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Poppins Thin';
+    src: url("../fonts/poppins/Poppins-Thin.ttf") format("truetype");
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-flow: column;
+    flex-direction: column;
+
+    row-gap: 20px;
+    color: ghostwhite;
+    text-align: center;
+    background-color: #0e0f13;
+    font-family: 'Bahnschrift', monospace;
+}
+
+a {
+    font-family: 'Bahnschrift', monospace;
+    color: whitesmoke;
+}
+
+label {
+    font-family: 'Bahnschrift', monospace;
+    color: whitesmoke;
+    font-size: 20px;
+}
+
+.register-title {
+    font-family: 'Poppins Black';
+    font-size: 40px;
+    color: whitesmoke;
+}
+
+.components {
+    width: 80%;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 20px;
+}
+
+.register-button {
+    margin-top: 20px;
+    border: 1px solid #161616;
+    border-radius: 7px;
+    background-color: #17181e;
+    padding: 10px;
+    font-size: 20px;
+    width: 200px;
+    height: 50px;
+
+    font-family: 'Bahnschrift';
+    font-size: 20px;
+    color: ghostwhite;
+}
+
+.input-style {
+    border: 1px solid #161616;
+    border-radius: 7px;
+    background-color: #17181e;
+    padding: 5px;
+    color: ghostwhite;
+    font-size: 17px;
+    height: 35px;
+
+    width: 80%;
+    text-align: center;
+
+    font-family: 'Bahnschrift';
+    font-size: 20px;
+    color: whitesmoke;
+}
+
+.input-style::placeholder {
+    font-family: 'Bahnschrift';
+    font-size: 20px;
+    color: gray;
+}
+
+.input-style:focus {
+    outline: none;
+}
+
+.main-components {
+    background-color: #101117;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    width: 500px;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    flex-flow: column;
+
+    justify-content: center;
+    align-items: center;
+
+    row-gap: 20px;
+}
+
+
+.bottom-class {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.register-button:hover {
+    transition: 0.3s;
+    background-color: ghostwhite;
+    color: #101117;
+}
+
+.register-button:after {
+    transition: 0.3s;
+}
+
+.verification-email-button {
+    margin-top: 10px;
+    border: 1px solid #161616;
+    border-radius: 7px;
+    background-color: #17181e;
+    padding: 10px;
+    color: ghostwhite;
+}
+
+.verification-email-button:hover {
+    transition: 0.3s;
+    background-color: ghostwhite;
+    color: #101117;
+}
+
+.verification-email-button:after {
+    transition: 0.3s;
+}
+
+.back {
+    margin-top: 20px;
+    border: 1px solid #161616;
+    border-radius: 7px;
+    background-color: #17181e;
+    padding: 10px;
+    color: ghostwhite;
+
+    width: 500px;
+    height: 70px;
+    font-size: 30px;
+}
+.back:hover {
+    transition: 0.5s;
+    background-color: ghostwhite;
+    color: #101117;
+}
+
+.back:after {
+    transition: 0.3s;
+}
+
+.error-container {
+    width: 500px;
+    height: 50px;
+    border-radius: 20px;
+
+    background-color: indianred;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 20px;
+
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.error-text {
+    font-family: 'Bahnschrift';
+    font-size: 20px;
+    color: whitesmoke;
+
+    flex: 1;
+    margin-left: 20px;
+}
+
+.error-button {
+    font-family: 'Bahnschrift';
+    font-size: 20px;
+    color: whitesmoke;
+
+    background-color: transparent;
+    border: none;
+
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.error-button:hover {
+    color: #131317;
+    transition: 0.3s;
+}

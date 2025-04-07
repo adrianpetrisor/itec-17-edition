@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Application | Creeaza un report bug</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/report-bug.css}">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+</head>
+<body>
+<span class="endpoint-title">Raporteaza un bug</span>
+<div th:if="${error}" class="error-container">
+    <span class="error-text" th:text="${errorMessage}"></span>
+    <button class="error-button" onclick="closeError()">X</button>
+</div>
+<div class = "login-parent">
+    <form th:action="@{/report-bug}" method="post" th:object="${bugCredentials}" class = "endpoint-form" autocomplete="off">
+        <div class = "main-components">
+
+            <div class = "endpoint-name">
+                <label for = "titlu-bug">Titlu Bug</label> </br>
+                <input type = "text" id = "titlu-bug" required th:field="*{title}" class = "input-style">
+            </div>
+
+            <div class = "endpoint-application">
+                <label for = "application-bug">Aplicatie</label> </br>
+                <input type = "text" id = "application-bug" required th:field="*{applicationName}" class = "input-style" th:attr="value=|${applicationName}|">
+            </div>
+
+            <div th:unless="${authenticated}" class = "endpoint-email">
+                <label for = "email-bug">Email</label> </br>
+                <input type = "email" id = "email-bug" required th:field="*{email}" class = "input-style">
+            </div>
+
+            <select class="input-style" th:field="*{type}" name="bug-type">
+                <option value="normal">Normal</option>
+                <option value="warning">Warning</option>
+                <option value="critical">Critical</option>
+            </select>
+
+            <div class = "bug-description">
+                <label>Descrie Problema</label>
+                <textarea required class = "description-area" aria-required="true" th:field="*{description}" style="min-height: 50px">
+
+                </textarea>
+            </div>
+
+            <input type = "submit" class = "reportbug-button" value = "Trimite reportul!">
+        </div>
+
+    </form>
+</div>
+</body>
+
+<script type = "text/javascript" th:src = "@{/js/jquery.min.js}"></script>
+<script type = "text/javascript" th:src = "@{/js/anime.min.js}"></script>
+<script type = "text/javascript" th:src = "@{/js/report-bug.js}"></script>
+</html>
+
